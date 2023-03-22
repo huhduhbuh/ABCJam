@@ -149,7 +149,7 @@ int main()
         switch (ch) 
         {
             case 'w': y -= y - 1 < 1 ? 0 : 1; break;                // ternary operator in c
-            case 's': y += y + 1 >= WIN_HEIGHT-1 ? 0 : 1; break;
+            case 's': y += y + 1 >= WIN_HEIGHT-2 ? 0 : 1; break;
             case 'a': x -= x - WIDTH < 1 ? 0 : WIDTH; break;
             case 'd': x += x + WIDTH >= WIN_WIDTH-1 ? 0 : WIDTH; break;
         }

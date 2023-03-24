@@ -55,8 +55,7 @@ int main()
     log downLogs[LOG_AMNT];
     log upLogs[LOG_AMNT];
     int logLen[] = {5, 6, 7, 8, 9, 10};  // list of possible log lengths
-    double delayList[] = {0.2, 0.3, 0.4}; // list of possible delay times (between each log movement, in seconds, basically changes speed)
-    int log = 0;
+    double delayList[] = {0.2, 0.3, 0.4, 0.5}; // list of possible delay times (between each log movement, in seconds, basically changes speed)
 
     int logLenLen = sizeof(logLen)/sizeof(logLen[0]);
     int delayListLen = sizeof(delayList)/sizeof(delayList[0]);
@@ -65,7 +64,7 @@ int main()
     initializeLogs(downLogs, upLogs, start, logLen, delayList, logLenLen, delayListLen);
 
     int i, j, x = 4, y = 9; // (x, y) = top left corner of player character
-    int bad = 0, good = 0;
+    int bad = 0, good = 0, log = 0, index;
     char ch = 0;
 
     // Initialize curses mode
@@ -118,6 +117,7 @@ int main()
             {
                 downLogs[i].time_start = current;
                 downLogs[i].tail++;
+                if (x == downLogs[i].xpos && y + 1 < WIN_HEIGHT-2 )y += 1;
             }
             wattron(win, COLOR_PAIR(2));
 
@@ -139,6 +139,7 @@ int main()
             {
                 upLogs[i].time_start = current;
                 upLogs[i].tail--;
+                if (x == upLogs[i].xpos && y - 1 >= 1) y -= 1;
             }
             wattron(win, COLOR_PAIR(3));
 
@@ -202,12 +203,18 @@ int main()
             refresh();      
             wrefresh(win);  
             nodelay(stdscr, FALSE);
+
+            x = 4;          // reset player
+            y = 9;
+            index = rand()%logLenLen;
+            if (logLen[index] > 5) logLen[index] -= 1;  // update possible log lengths
+            for (i = 0; i < delayListLen; i++)              // make logs move faster
+                if (delayList[i] > 0.2) delayList[i] -= 0.01;
+
+            initializeLogs(downLogs, upLogs, start, logLen, delayList, logLenLen, delayListLen);
+            score++;
             getch();
             nodelay(stdscr, TRUE);
-            x = 4; 
-            y = 9;
-            score++;
-            initializeLogs(downLogs, upLogs, start, logLen, delayList, logLenLen, delayListLen);
         }
     }
     // Clean up and exit curses mode
@@ -215,6 +222,5 @@ int main()
     endwin();
     return 0;
 }
-
 
 

@@ -10,6 +10,75 @@
 #define WIN_HEIGHT 18
 #define LOG_AMNT 9     
 
+
+typedef char string[40];
+
+void delay(int milliseconds) {
+    clock_t start_time = clock();
+    while (clock() < start_time + milliseconds);
+}
+
+void draw_elevator() 
+{
+    int i, j;
+    string a =  "||KANTO-TERRORS--IN-ABC-JAM-CS||";
+    
+    for (i = 15, j = 16; i > 1; i--, j++)
+    {
+        system("cls");
+        a[i] = '[';
+        a[j] = ']';
+        printf("\033[1;32m%s\033[0m\n", " +============================+");
+        printf("\033[1;32m%s\033[0m\n", a);
+        printf("\033[1;32m%s\033[0m\n", a);
+        printf("\033[1;32m%s\033[0m\n", a);
+        printf("\033[1;32m%s\033[0m\n", a);
+        printf("\033[1;32m%s\033[0m\n", a);
+        printf("\033[1;32m%s\033[0m\n", a);
+        printf("\033[1;32m%s\033[0m\n", a);
+        printf("\033[1;32m%s\033[0m\n", a);
+        printf("\033[1;32m%s\033[0m\n", a);
+        printf("\033[1;32m%s\033[0m\n", a);
+        printf("\033[1;32m%s\033[0m\n", a);
+        printf("\033[1;32m%s\033[0m\n", a);
+        printf("\033[1;32m%s\033[0m\n", a);
+        printf("\033[1;32m%s\033[0m\n", a);
+        printf("\033[1;32m%s\033[0m\n", a);
+        printf("\033[1;32m%s\033[0m\n", a);
+        printf("\033[1;32m%s\033[0m\n", " +============================+");
+        a[i] = ' ';
+        a[j] = ' ';
+
+        delay(100);
+    }
+
+    //a = "||WELCOME THIS IS A GAME||";
+    system("cls");
+    printf("\033[1;32m%s\033[0m\n", " +============================+");
+    printf("\033[1;32m%s\033[0m\n", a);
+    printf("\033[1;32m%s\033[0m\n", a);
+    printf("\033[1;32m%s\n", a);
+    printf("||\033[1;33m%s\033[1;32m||\n", " \"Froggy Crossing the Road\" ");
+    printf("\033[1;32m%s\033[0m\n", a);
+    printf("\033[1;32m%s\033[0m\n", a);
+    printf("\033[1;32m%s\033[0m\n", a);
+    printf("\033[1;32m%s\033[0m\n", "||   WELCOME THIS IS A GAME   ||");
+    printf("\033[1;32m%s\033[0m\n", a);
+    printf("\033[1;32m%s\033[0m\n", "||      BY KANTO TERRORS      ||");
+    printf("\033[1;32m%s\033[0m\n", a);
+    printf("\033[1;32m%s\033[0m\n", "||    Press Enter To Start    ||");
+    printf("\033[1;32m%s\033[0m\n", a);
+    printf("\033[1;32m%s\033[0m\n", a);
+    printf("\033[1;32m%s\033[0m\n", a);
+    printf("\033[1;32m%s\033[0m\n", a);
+    printf("\033[1;32m%s\033[0m\n", " +============================+");
+
+    fflush (stdout);
+    getchar();
+    while(getchar() != '\n');
+}
+
+
 typedef struct {
     int length;
     int tail;
@@ -48,6 +117,18 @@ void initializeLogs(log downLogs[], log upLogs[], clock_t start, int logLen[], d
 
 int main()
 {
+    system("cls");
+    int choice;
+
+    printf("\nHi player!\n");
+    printf("\nType 1 if you are ready to play the game: ");
+    scanf("%d", &choice);
+
+    if (choice != 1)
+        return 0;
+
+    draw_elevator();
+
     srand(time(NULL));                  // time vars
     clock_t start = clock(), current;  // Get the start time
     double elapsed;

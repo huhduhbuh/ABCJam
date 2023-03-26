@@ -2,6 +2,7 @@
 #include <time.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 #define PLAT_OFFSET 9   // platform offset
 #define WIDTH 3         //  width and height of player
@@ -172,7 +173,7 @@ int main()
         werase(win);    // clear window
         box(win, 0, 0); // draw box on borders of window
         mvprintw(0, 0, "Score: %d", score);
-        mvprintw(1, 0, "Use 'wasd' to move around, press 'q' to quit");
+        mvprintw(1, 0, "Use WASD to move around, press Q to quit");
         mvprintw(2, 0, "Get to the other side using the elevators, don't fall");
 
         // draw start and end platforms
@@ -236,7 +237,7 @@ int main()
         }
 
         // get user input for movement
-        ch = getch();
+        ch = tolower(getch());
         switch (ch) 
         {
             case 'w': y -= y - 1 < 1 ? 0 : 1; break;                // ternary operator in c
@@ -268,11 +269,11 @@ int main()
         if (bad != 0 && log == 0)
         {
             mvwprintw(win, WIN_HEIGHT/2, WIN_WIDTH/2-5, "GAME OVER!");
-            mvwprintw(win, WIN_HEIGHT/2+1, WIN_WIDTH/2-11, "Press any key to exit");
+            mvwprintw(win, WIN_HEIGHT/2+1, WIN_WIDTH/2-8, "Press Q to quit");
             refresh();      
             wrefresh(win);  
             nodelay(stdscr, FALSE);
-            getch();
+            while(tolower(getch())!='q');
             break;
         }
 

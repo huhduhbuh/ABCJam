@@ -59,8 +59,8 @@ void draw_elevator()
     printf("\033[1;32m%s\033[0m\n", a);
     printf("\033[1;32m%s\033[0m\n", a);
     printf("\033[1;32m%s\n", a);
-    printf("||\033[1;33m%s\033[1;32m||\n", " \"Froggy Crossing the Road\" ");
-    printf("\033[1;32m%s\033[0m\n", a);
+    printf("||\033[1;33m%s\033[1;32m||\n", "   The Last Elevator Ride:  ");
+    printf("||\033[1;33m%s\033[1;32m||\n", " Andrew's Race Against Time ");
     printf("\033[1;32m%s\033[0m\n", a);
     printf("\033[1;32m%s\033[0m\n", a);
     printf("\033[1;32m%s\033[0m\n", "||   WELCOME THIS IS A GAME   ||");
@@ -174,7 +174,7 @@ int main()
         box(win, 0, 0); // draw box on borders of window
         mvprintw(0, 0, "Score: %d", score);
         mvprintw(1, 0, "Use WASD to move around, press Q to quit");
-        mvprintw(2, 0, "Get to the other side using the elevators, don't fall");
+        mvprintw(2, 0, "Get to the other side using the elevators, don't fall!");
 
         // draw start and end platforms
         wattron(win, COLOR_PAIR(4));

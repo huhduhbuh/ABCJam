@@ -60,7 +60,7 @@ void draw_elevator()
     printf("\033[1;32m%s\033[0m\n", a);
     printf("\033[1;32m%s\n", a);
     printf("||\033[1;33m%s\033[1;32m||\n", "   The Last Elevator Ride:  ");
-    printf("||\033[1;33m%s\033[1;32m||\n", " Andrew's Race Against Time ");
+    printf("||\033[1;33m%s\033[1;32m||\n", "   Andrew's Race to Class   ");
     printf("\033[1;32m%s\033[0m\n", a);
     printf("\033[1;32m%s\033[0m\n", a);
     printf("\033[1;32m%s\033[0m\n", "||   WELCOME THIS IS A GAME   ||");
